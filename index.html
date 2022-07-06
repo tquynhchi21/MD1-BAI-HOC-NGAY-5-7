@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <label>Đoán số từ 1-10 - Bạn có 3 lần đoán</label>
+    <input  type="number" id="number">
+        <button onclick="doanSo()" id="btn">Đoán xem</button>
+        <p style="color: blue" id="random"></p>
+        <p style="color: red" id="count"></p>
+    </body>
+    </html>
+    <script>
+        console.log('log = ',Math.floor(Math.random()*10))
+        count = 3;
+        function doanSo() {
+        document.getElementById('btn').innerHTML = 'Đoán Tiếp'
+        let num = document.getElementById('number').value;
+
+        let numRanDom = Math.floor(Math.random() * 10 + 1);
+        document.getElementById('random').innerHTML = 'Số trúng thưởng là: '+numRanDom
+        console.log('numRandom == ', numRanDom)
+        if(num==numRanDom && count>=0){
+        alert('Đoán đúng rồi')
+    } else {
+        count--
+    }
+        document.getElementById('count').innerHTML = 'Số lượt chơi còn lại: '+count
+        console.log('count == ',count)
+        if(count<=0){
+        document.getElementById('count').innerHTML = 'Bạn đã hết lượt chơi rồi';
+        document.getElementById('btn').innerHTML = 'Chơi Lại';
+        document.getElementById('number').value = '';
+        count = 3;
+        return
+    }
+    }
+
+</script>
+
+</body>
+</html>
